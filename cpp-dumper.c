@@ -62,8 +62,14 @@ void clear_screen() {
 
 void add_symbol(uint64_t offset, const char *class_name, const char *method_name) {
     if (sym_count >= sym_capacity) {
-        sym_capacity = sym_capacity == 0 ? 64 : sym_capacity * 2;
-        symbols = realloc(symbols, sym_capacity * sizeof(Symbol));
+        size_t new_capacity = sym_capacity == 0 ? 64 : sym_capacity * 2;
+        if (new_capacity == 0 || new_capacity > SIZE_MAX / sizeof(Symbol)) {
+            fprintf(stderr, "Symbol capacity overflow\n");
+            exit(1);
+        }
+        symbols = realloc(symbols, new_capacity * sizeof(Symbol));
+        if (!symbols) { fprintf(stderr, "Memory allocation failed\n"); exit(1); }
+        sym_capacity = new_capacity;
     }
     symbols[sym_count].offset = offset;
     symbols[sym_count].class_name = strdup(class_name);
