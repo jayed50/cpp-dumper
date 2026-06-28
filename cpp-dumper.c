@@ -267,7 +267,8 @@ int main() {
     base_name[sizeof(base_name) - 1] = '\0';
     char *ext = strrchr(base_name, '.');
     if (ext) *ext = '\0';
-    if (strncmp(base_name, "lib", 3) == 0) memmove(base_name, base_name + 3, strlen(base_name) - 2);
+    size_t bn_len = strlen(base_name);
+    if (strncmp(base_name, "lib", 3) == 0 && bn_len >= 3) memmove(base_name, base_name + 3, bn_len - 2);
 
     print_banner();
     printf(C_CYAN "" C_RST " " UI_PROCESSING " " C_BOLD "%s" C_RST "...\n", lib_path);
